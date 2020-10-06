@@ -122,7 +122,7 @@ Transformed.Multivariate.Normal.Distribution <- function(mu=rep(0,nrow(sigma)),
         Multivariate.Normal.Distribution(mu=mu, sigma=sigma, lower=lower, upper=upper, var.names = var.names)
     else if (all(transformation.names=='log'))
         Multivariate.Lognormal.Distribution(mu=mu, sigma=sigma, lower=lower, upper=upper, var.names=var.names)
-    else if (transformation.name=='logit')
+    else if (all(transformation.names=='logit'))
         Multivariate.Logitnormal.Distribution(mu=mu, sigma=sigma, lower=lower, upper=upper, var.names=var.names)
     else
         new('Multivariate_Normal_Distribution',

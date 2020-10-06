@@ -323,7 +323,7 @@ def=function(dist, coverage=0.95, n.sim=1000)
 #'@return If length(coverage)==1, and the distribution has one variable, returns a numeric vector with two values: the lower and upper bound of the interval.
 #'If length(coverage)==1 and the distribution has more than one variable, returns a matrix with one row for the lower bound and one row for the upper, and one column for each variable.
 #'If length(coverage)>1 and the distribution has one variable, returns a matrix with one row for the lower bound and one row for the upper bound, and one column for each value in coverage.
-#'If length(coverage)>1, and the distribution has more than one variable returns a 3-dimensional array; the first dimension has values 'ci.lower' and 'ci.upper'. The second dimension has one value for each variable. The third dimension has one value for each value of coverage.
+#'If length(coverage)>1, and the distribution has more than one variable returns a 3-dimensional array; the first dimension has values 'lower' and 'upper'. The second dimension has one value for each variable. The third dimension has one value for each value of coverage.
 #'
 #'@seealso \code{\link{get.equal.tailed.intervals}}, \code{\link{get.highest.density.intervals}}
 #'@details Note to developers: this function should not be overridden. Override \code{\link{do.get.equal.tailed.intervals}} and \code{\link{do.get.highest.density.intervals}} instead
@@ -344,7 +344,7 @@ function(dist, type=c('equal-tailed','highest-density')[1], coverage=0.95, n.sim
     else
         stop("type must be either 'equal-tailed' or 'highest-density")
 
-    dim.names = list(bound=c('ci.lower','ci.upper'),
+    dim.names = list(bound=c('lower','upper'),
                      variable=dist@var.names,
                      coverage=as.character(coverage))
 

@@ -25,4 +25,4 @@ Collate:
     multivariate_normal_distribution.R
     multivariate_constructors.R
 Imports: mvtnorm, tmvtnorm, matrixcalc
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
