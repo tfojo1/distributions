@@ -113,7 +113,9 @@ def=function(.Object,
         .Object@transformation = get.defined.transformation('identity')
     else if (is(transformation, 'character'))
         .Object@transformation = get.defined.transformation(transformation, throw.error.if.no.match=T)
-    else if (!is(transformation, 'transformation'))
+    else if (is(transformation, 'transformation'))
+        .Object@transformation = transformation
+    else
         stop("transformation must be either a transformation object, a character name of a predefined transformation, or NULL")
 
 

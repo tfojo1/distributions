@@ -71,7 +71,7 @@ get.defined.transformation <- function(transformation.names,
 setMethod('show',
           signature(object='transformation'),
           def=function(object){
-              paste0(object@name, " transformation object")
+              cat(paste0(object@name, " transformation object"))
           })
 
 DEFINED.TRANSFORMATIONS = list(log=create.transformation(transform.function = log,
@@ -88,7 +88,27 @@ DEFINED.TRANSFORMATIONS = list(log=create.transformation(transform.function = lo
                                                               reverse.transform.function = function(x){x},
                                                               transformation.derivative = function(x){rep(1, length(x))},
                                                               log.abs.transformation.derivative = function(x){rep(0, length(x))},
-                                                              name='identity')
+                                                              name='identity'),
+                               pnorm=create.transformation(transform.function = pnorm,
+                                                           reverse.transform.function = qnorm,
+                                                           transformation.derivative = dnorm,
+                                                           log.abs.transformation.derivative = function(x){dnorm(x, log=T)},
+                                                           name='pnorm'),
+                               qnorm=create.transformation(transform.function = qnorm,
+                                                           reverse.transform.function = pnorm,
+                                                           transformation.derivative = function(x){
+                                                               inv.rv = dnorm(qnorm(x))
+                                                               rv = 1/inv.rv
+                                                               rv[inv.rv==0] = 0
+                                                               rv
+                                                           },
+                                                           log.abs.transformation.derivative = function(x){
+                                                               inv.rv = dnorm(qnorm(x), log=T)
+                                                               rv = -inv.rv
+                                                               rv[inv.rv==-Inf] = -Inf
+                                                               rv
+                                                           },
+                                                           name='qnorm')
                                )
 
 
