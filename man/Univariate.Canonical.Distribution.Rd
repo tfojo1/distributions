@@ -72,6 +72,7 @@ Other Distribution Constructors:
 \code{\link{Lognormal.Distribution}()},
 \code{\link{Lognormal.Mixture}()},
 \code{\link{Loguniform.Distribution}()},
+\code{\link{Multivariate.Correlated.Uniform.Distribution}()},
 \code{\link{Multivariate.Logitnormal.Distribution}()},
 \code{\link{Multivariate.Lognormal.Distribution}()},
 \code{\link{Multivariate.Normal.Distribution}()},
