@@ -913,6 +913,60 @@ def=function(dist)
     }
 })
 
+##--------------------------##
+##-- TESTING FOR EQUALITY --##
+##--------------------------##
+
+#'@title Tests whether two Distribution objects represent the same distribution
+#'
+#'@description Evaluates to true if the two distributions produce the same random samples
+#'
+#'@param dist1,dist2 The distributions to compare
+#'
+#'@details The variable order must be the same for two multivariate distributions, otherwise the equality test will return false
+#'
+#'@return True if the two distributions produce the same random samples
+#'
+#'@export
+setGeneric('distributions.equal',
+           def=function(dist1,dist2){standardGeneric('distributions.equal')})
+setMethod('distributions.equal',
+          signature(dist1='Distribution',dist2='Distribution'),
+def=function(dist1,dist2)
+{
+    # Check class and n.var
+    if (class(dist1) != class(dist2) ||
+        dist1@n.var != dist2@n.var)
+        return (F)
+
+    dist1.is.named = !is.null(dist1@var.names)
+    dist2.is.named = !is.null(dist2@var.names)
+
+    # Check var.names
+    if (dist1.is.named != dist2.is.named)
+        return (F)
+    if (dist1.is.named && !setequal(dist1@var.names, dist2@var.names))
+        return (F)
+
+    # Make random samples
+    to.reset.seed = round(runif(1, min=0, max=.Machine$integer.max))
+    n.rands = 10
+
+    set.seed(to.reset.seed)
+    rands1 = generate.random.samples(dist1, n.rands)
+
+    set.seed(to.reset.seed)
+    rands2 = generate.random.samples(dist2, n.rands)
+
+    # Reset seed
+    set.seed(to.reset.seed)
+
+    # Test for equality of samples
+    if (dist1.is.named && dist1@n.var>1)
+        all(rands1 == rands2[,dist1@var.names])
+    else
+        all(as.numeric(rands1) == as.numeric(rands2))
+})
 
 ##-------------------##
 ##-- OTHER METHODS --##
