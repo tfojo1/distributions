@@ -963,7 +963,7 @@ def=function(dist1,dist2)
 
     # Test for equality of samples
     if (dist1.is.named && dist1@n.var>1)
-        all(rands1 == rands2[,dist1@var.names])
+        all(rands1[,dist1@var.names] == rands2[,dist1@var.names])
     else
         all(as.numeric(rands1) == as.numeric(rands2))
 })
