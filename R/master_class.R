@@ -57,7 +57,7 @@ setMethod('initialize',
     #Check names
     if (!is.null(var.names) && !is(var.names, 'character'))
         stop("'var.names' must be either a character vector or NULL")
-    if (!is.null(var.names) && any(is.na(var.names) && !all(is.na(var.names))))
+    if (!is.null(var.names) && any(is.na(var.names)) && !all(is.na(var.names)))
         stop("'var.names' cannot contain NA values")
 
     named.vars = !is.null(var.names) && length(var.names)>0 && all(!is.na(var.names))
