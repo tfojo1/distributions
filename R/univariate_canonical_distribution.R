@@ -48,7 +48,7 @@ setClass('Univariate_Canonical_Distribution',
 #'@param support A \link{support} object that
 #'@param density.function,cdf.function,quantile.function The functions that calculate the density, cdf, and quantile respectively. These should take the standard parameters of such functions in R. density.function should take 'x', distribution-specific parameters, and 'log'. cdf.function should take 'q', distribution-specific parameters, 'lower.tail' and 'log.p'. quantile.function should take 'p', distribution-specific parameters, and 'lower.tail' and 'log.p'
 #'@param transformation A transformation object, if the named distribution operates on a transformation of the random variable (can also pass NULL for no transformation or the name of a predefined transformation - see \code{\link{get.defined.transformation}}). For example, to create a log-normal distribution, use dist.name='norm' with transformation='log
-#'@param is.improper,is.discrete Logicals indicating whether the distribution is improper/discrete
+#'@param is.improper Logicals indicating whether the distribution is improper/discrete
 #'@param mean.value,variance If known, these values will be returned for calls to get.means, get.sds, get.covariance.matrix. If passed NA, random sampling will be used to estimate distribution parameters if requested
 #'
 #'@family Univariate Canonical Distribution Constructors
@@ -67,7 +67,6 @@ Univariate.Canonical.Distribution <- function(name,
                                               quantile.function.name=paste0('q', dist.name),
                                               transformation=NULL,
                                               is.improper=F,
-                                              is.discrete=F,
                                               mean.value=as.numeric(NA),
                                               variance.value=as.numeric(NA))
 {

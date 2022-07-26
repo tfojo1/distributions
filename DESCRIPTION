@@ -24,5 +24,6 @@ Collate:
     canonical_mixture_constructors.R
     multivariate_normal_distribution.R
     multivariate_constructors.R
+    discrete_set_distributions.R
 Imports: mvtnorm, tmvtnorm, matrixcalc
 RoxygenNote: 7.1.1

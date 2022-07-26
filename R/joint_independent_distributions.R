@@ -95,6 +95,7 @@ def=function(.Object, ..., var.names=NULL)
                 var.names.for.dist = paste0(component.name, '.', 1:dist@n.var)
         }
         listed.var.names = c(listed.var.names, var.names.for.dist)
+        components[[i]] = dist = set.var.names(dist, var.names.for.dist)
 
         supports = c(supports, list(dist@support))
 
@@ -308,4 +309,30 @@ def=function(dist, keep.indices)
         components[[1]]
     else
         join.distributions(components, var.names = dist@var.names[keep.indices])
+})
+
+setMethod('set.var.names',
+          signature(object='Joint_Independent_Distributions'),
+function(object,var.names){
+    object = callNextMethod(object, var.names)
+
+    for (i in 1:length(object@subdistributions))
+    {
+        object@subdistributions[[i]] = set.var.names(object@subdistributions[[i]],
+                                                     var.names[object@indices.for.subdistributions[[i]]])
+    }
+
+    object
+})
+
+
+setMethod('separate.independent.distributions',
+          signature(object='Joint_Independent_Distributions'),
+function(object)
+{
+    rv = list()
+    for (dist in object@subdistributions)
+        rv = c(rv, separate.independent.distributions(dist))
+
+    rv
 })

@@ -1000,3 +1000,42 @@ setMethod('show',
           function(object){
               print(get.description(object))
           })
+
+
+#'@title Sets the variable names for a Distribution Object
+#'
+#'@param var.names The character vector of variable names
+#'
+#'@return A Distribution object with the new var.names set
+#'
+#'@export
+setGeneric('set.var.names',
+           def=function(object,var.names){standardGeneric('set.var.names')})
+setMethod('set.var.names',
+          signature(object='Distribution'),
+          function(object,var.names){
+
+              if (!is.character(var.names) || length(var.names) != object@n.var || any(is.na(var.names)))
+                  stop("var.names must be a non-NA, character vector with one value for each variable in the distribution")
+
+              object@var.names = var.names
+
+              object
+          })
+
+
+#'@title Separate a distribution object into a list of distributions that are independent from each other
+#'
+#'@param object A distribution object
+#'
+#'@return A list of Distribution objects, where each distribution either (a) is univariate or (b) contains only correlated variables
+#'
+#'@export
+setGeneric('separate.independent.distributions',
+           def=function(object,var.names){standardGeneric('separate.independent.distributions')})
+setMethod('separate.independent.distributions',
+          signature(object='Distribution'),
+          function(object)
+          {
+              object #by default, presume that these distributions are not independent
+          })
