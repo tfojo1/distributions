@@ -1023,9 +1023,9 @@ setMethod('set.var.names',
                       stop("if not NULL, var.names must be a non-NA, character vector with one value for each variable in the distribution")
 
                   object@var.names = var.names
-
-                  object
               }
+
+              object
           })
 
 
