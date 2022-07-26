@@ -1015,12 +1015,17 @@ setMethod('set.var.names',
           signature(object='Distribution'),
           function(object,var.names){
 
-              if (!is.character(var.names) || length(var.names) != object@n.var || any(is.na(var.names)))
-                  stop("var.names must be a non-NA, character vector with one value for each variable in the distribution")
+              if (is.null(var.names))
+                  object@var.names = NULL
+              else
+              {
+                  if (!is.character(var.names) || length(var.names) != object@n.var || any(is.na(var.names)))
+                      stop("if not NULL, var.names must be a non-NA, character vector with one value for each variable in the distribution")
 
-              object@var.names = var.names
+                  object@var.names = var.names
 
-              object
+                  object
+              }
           })
 
 

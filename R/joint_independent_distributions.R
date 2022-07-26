@@ -116,12 +116,13 @@ def=function(.Object, ..., var.names=NULL)
     else
         var.names = listed.var.names
 
+    is.improper = as.logical(unlist(sapply(components, function(dist){dist@is.improper})))
 
     .Object = callNextMethod(.Object,
                              var.names=var.names,
                              n.var=n.var,
                              support=Multivariate.Support(supports),
-                             is.improper=unlist(sapply(components, function(dist){dist@is.improper})))
+                             is.improper=is.improper)
 
     .Object@subdistributions=components
     .Object@indices.for.subdistributions=indices.for.subdistributions
