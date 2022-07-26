@@ -24,6 +24,8 @@ Other Distribution Constructors:
 \code{\link{Binomial.Distribution}()},
 \code{\link{Canonical.Mixture.Distribution}()},
 \code{\link{Compound.Symmetry.Multivariate.Normal.Distribution}()},
+\code{\link{Constant.Distribution}()},
+\code{\link{Discrete.Set.Distribution}()},
 \code{\link{Logitnormal.Distribution}()},
 \code{\link{Logitnormal.Mixture}()},
 \code{\link{Logituniform.Distribution}()},

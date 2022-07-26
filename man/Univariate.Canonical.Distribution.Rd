@@ -15,7 +15,6 @@ Univariate.Canonical.Distribution(
   quantile.function.name = paste0("q", dist.name),
   transformation = NULL,
   is.improper = F,
-  is.discrete = F,
   mean.value = as.numeric(NA),
   variance.value = as.numeric(NA)
 )
@@ -33,7 +32,7 @@ Univariate.Canonical.Distribution(
 
 \item{transformation}{A transformation object, if the named distribution operates on a transformation of the random variable (can also pass NULL for no transformation or the name of a predefined transformation - see \code{\link{get.defined.transformation}}). For example, to create a log-normal distribution, use dist.name='norm' with transformation='log}
 
-\item{is.improper, is.discrete}{Logicals indicating whether the distribution is improper/discrete}
+\item{is.improper}{Logicals indicating whether the distribution is improper/discrete}
 
 \item{mean.value, variance}{If known, these values will be returned for calls to get.means, get.sds, get.covariance.matrix. If passed NA, random sampling will be used to estimate distribution parameters if requested}
 
@@ -65,6 +64,8 @@ Other Distribution Constructors:
 \code{\link{Binomial.Distribution}()},
 \code{\link{Canonical.Mixture.Distribution}()},
 \code{\link{Compound.Symmetry.Multivariate.Normal.Distribution}()},
+\code{\link{Constant.Distribution}()},
+\code{\link{Discrete.Set.Distribution}()},
 \code{\link{Empiric.Distribution}()},
 \code{\link{Logitnormal.Distribution}()},
 \code{\link{Logitnormal.Mixture}()},

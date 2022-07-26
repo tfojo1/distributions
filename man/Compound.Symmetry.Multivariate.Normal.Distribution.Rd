@@ -40,6 +40,8 @@ Other Distribution Constructors:
 \code{\link{Beta.Distribution}()},
 \code{\link{Binomial.Distribution}()},
 \code{\link{Canonical.Mixture.Distribution}()},
+\code{\link{Constant.Distribution}()},
+\code{\link{Discrete.Set.Distribution}()},
 \code{\link{Empiric.Distribution}()},
 \code{\link{Logitnormal.Distribution}()},
 \code{\link{Logitnormal.Mixture}()},
