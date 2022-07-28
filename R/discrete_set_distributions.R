@@ -113,7 +113,7 @@ setMethod('initialize',
     .Object
 })
 
-#'@title Create a distribution representing a Constant Distirbution
+#'@title Create a distribution representing a Constant Distribution
 #'
 #'@description Creates an object representing a degenerate distribution that only supports a single, discrete value
 #'

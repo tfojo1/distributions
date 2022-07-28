@@ -2,7 +2,7 @@
 % Please edit documentation in R/discrete_set_distributions.R
 \name{Constant.Distribution}
 \alias{Constant.Distribution}
-\title{Create a distribution representing a Constant Distirbution}
+\title{Create a distribution representing a Constant Distribution}
 \usage{
 Constant.Distribution(value, var.name = NULL)
 }
