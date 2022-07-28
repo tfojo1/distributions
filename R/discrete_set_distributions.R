@@ -292,8 +292,8 @@ def=function(object){
     rv = paste0("A discrete distribuution over ",
                 length(dist@values), " value",
                 ifelse(length(dist@values)==1, '', 's'))
-    if (length(dist@values)<=5)
-        rv = paste0(rv, ": ", paste0(dist@values, collapse=', '))
+    if (length(object@values)<=5)
+        rv = paste0(rv, ": <", paste0(object@values, collapse=', '), ">")
 
     rv
 })
@@ -301,6 +301,6 @@ def=function(object){
 setMethod('get.description',
           signature(object='Constant_Distribution'),
 def=function(object){
-    paste0("A constant distribution with value ", dist@value)
+    paste0("A constant distribution with value ", object@value)
 })
 
