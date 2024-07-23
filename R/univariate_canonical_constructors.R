@@ -140,7 +140,7 @@ Transformed.Normal.Distribution <- function(mean=0, sd=1, transformation=NULL,
     else if (transformation.name=='log')
         Lognormal.Distribution(meanlog=mean, sdlog=sd, lower=lower, upper=upper, var.name=var.name)
     else if (transformation.name=='logit')
-        Logitnormal.Distribution(meanlogit=mean, sdlogit=sd, weights=weights, lower=lower, upper=upper, var.name=var.name)
+        Logitnormal.Distribution(meanlogit=mean, sdlogit=sd, lower=lower, upper=upper, var.name=var.name)
     else
         Univariate.Canonical.Distribution(name=get.canonical.distribution.name(paste0('normal (after',
                                                                                       transformation.name,

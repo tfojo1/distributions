@@ -65,7 +65,7 @@ Multivariate.Lognormal.Distribution <- function(mu=rep(0,nrow(sigma)),
 Multivariate.Logitnormal.Distribution <- function(mu=rep(0,nrow(sigma)),
                                                 sigma=diag(rep(1, length(mu))),
                                                 lower=0,
-                                                upper=Inf,
+                                                upper=1,
                                                 var.names=NULL)
 {
     if (any(lower<0))
