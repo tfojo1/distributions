@@ -87,8 +87,8 @@ Canonical.Mixture.Distribution <- function(name,
         quantile.function.name=quantile.function.name,
         transformation=transformation,
         is.improper=is.improper,
-        mean.values=mean.value,
-        variance.values=variance.value)
+        mean.values=mean.values,
+        variance.values=variance.values)
 }
 setMethod('initialize',
           signature(.Object='Canonical_Mixture_Distribution'),
@@ -106,7 +106,8 @@ def = function(.Object,
                mean.values=as.numeric(NA),
                variance.values=as.numeric(NA))
 {
-    .Object = callNextMethod(var.names=var.name,
+    .Object = callNextMethod(.Object,
+                             var.names=var.name,
                              n.var=1,
                              support=support,
                              is.improper=is.improper)
@@ -128,7 +129,7 @@ def = function(.Object,
             stop("All the elements of 'parameters' must have the same length as the other elements or be of length 1")
     }
 
-    .Object@n.components = n.components
+    .Object@n.components = as.integer(n.components)
 
     #-- Set up weights --#
     if (length(weights)==1)
